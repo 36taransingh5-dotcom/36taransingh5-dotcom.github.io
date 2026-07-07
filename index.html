@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taran Pal Singh — Builder & CS @ Southampton</title>
+<meta name="description" content="Taran Pal Singh — Computer Science student at the University of Southampton building AI agents, products, and platforms.">
+<meta property="og:title" content="Taran Pal Singh">
+<meta property="og:description" content="CS @ Southampton. Building AI agents, products, and platforms.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0c;
+    --bg-soft: #101014;
+    --card: #131318;
+    --line: #232329;
+    --text: #ececf1;
+    --muted: #9a9aa6;
+    --faint: #6b6b76;
+    --accent: #c8f04a;
+    --accent-dim: rgba(200, 240, 74, 0.12);
+    --sans: "Inter", system-ui, sans-serif;
+    --disp: "Space Grotesk", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color: #0a0a0c; }
+
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(10, 10, 12, 0.75);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .logo {
+    font-family: var(--mono); font-size: 14px; color: var(--text);
+    text-decoration: none; letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: 13.5px; font-weight: 500;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  @media (max-width: 640px) { .nav-links { display: none; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 110px 0 90px; position: relative; overflow: hidden; }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 10%, rgba(200,240,74,0.07), transparent),
+      repeating-linear-gradient(0deg, transparent, transparent 47px, rgba(255,255,255,0.025) 48px),
+      repeating-linear-gradient(90deg, transparent, transparent 47px, rgba(255,255,255,0.025) 48px);
+    pointer-events: none;
+  }
+  .kicker {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    letter-spacing: 0.08em; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+  }
+  .kicker::before { content: ""; width: 34px; height: 1px; background: var(--accent); display: inline-block; }
+  h1 {
+    font-family: var(--disp); font-size: clamp(42px, 7vw, 76px);
+    font-weight: 700; line-height: 1.04; letter-spacing: -0.02em;
+  }
+  h1 .dim { color: var(--faint); }
+  .hero p.lede {
+    margin-top: 26px; max-width: 560px; color: var(--muted); font-size: 17.5px;
+  }
+  .hero p.lede strong { color: var(--text); font-weight: 600; }
+  .hero-cta { margin-top: 38px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: 13.5px; font-weight: 500;
+    padding: 12px 22px; border-radius: 8px; text-decoration: none;
+    transition: transform 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-solid { background: var(--accent); color: #0a0a0c; }
+  .btn-solid:hover { background: #d6fa62; }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text); }
+  .btn-ghost:hover { border-color: var(--faint); }
+  .hero-meta {
+    margin-top: 54px; display: flex; gap: 34px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 12.5px; color: var(--faint);
+  }
+  .hero-meta b { display: block; color: var(--text); font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+
+  /* ---------- sections ---------- */
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+  .sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 44px; }
+  .sec-num { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+  h2 {
+    font-family: var(--disp); font-size: clamp(26px, 4vw, 34px);
+    font-weight: 600; letter-spacing: -0.01em;
+  }
+
+  /* ---------- experience ---------- */
+  .xp { display: grid; gap: 0; }
+  .xp-item {
+    display: grid; grid-template-columns: 170px 1fr; gap: 24px;
+    padding: 26px 0; border-bottom: 1px solid var(--line);
+  }
+  .xp-item:last-child { border-bottom: none; }
+  .xp-when { font-family: var(--mono); font-size: 12.5px; color: var(--faint); padding-top: 4px; }
+  .xp-role { font-family: var(--disp); font-size: 18px; font-weight: 600; }
+  .xp-org { color: var(--accent); font-weight: 500; font-size: 14.5px; margin-top: 2px; }
+  .xp-desc { color: var(--muted); font-size: 14.5px; margin-top: 8px; max-width: 640px; }
+  .tag-now {
+    display: inline-block; font-family: var(--mono); font-size: 10.5px;
+    background: var(--accent-dim); color: var(--accent);
+    padding: 2px 8px; border-radius: 20px; margin-left: 10px; vertical-align: middle;
+    letter-spacing: 0.05em;
+  }
+  @media (max-width: 640px) { .xp-item { grid-template-columns: 1fr; gap: 6px; } }
+
+  /* ---------- projects ---------- */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    padding: 26px; display: flex; flex-direction: column; gap: 10px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+  a.card { text-decoration: none; color: inherit; }
+  .card:hover { border-color: #3a3a44; transform: translateY(-3px); }
+  .card-top { display: flex; justify-content: space-between; align-items: center; }
+  .card h3 { font-family: var(--disp); font-size: 19px; font-weight: 600; }
+  .card .status {
+    font-family: var(--mono); font-size: 10.5px; color: var(--faint);
+    border: 1px solid var(--line); padding: 3px 9px; border-radius: 20px; letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .card .status.live { color: var(--accent); border-color: rgba(200,240,74,0.35); }
+  .card p { color: var(--muted); font-size: 14px; flex: 1; }
+  .card .stack { font-family: var(--mono); font-size: 11.5px; color: var(--faint); line-height: 1.8; }
+  .card .award-line { font-size: 13px; color: var(--accent); font-weight: 500; }
+  .card .ext { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .featured { grid-column: span 2; }
+  @media (max-width: 760px) { .featured { grid-column: span 1; } }
+
+  /* ---------- awards ---------- */
+  .awards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width: 760px) { .awards { grid-template-columns: 1fr; } }
+  .award {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--bg-soft); border: 1px solid var(--line); border-radius: 12px; padding: 18px 20px;
+  }
+  .award .ic { color: var(--accent); font-size: 18px; line-height: 1.4; }
+  .award b { display: block; font-size: 14.5px; font-weight: 600; }
+  .award span { font-size: 13px; color: var(--muted); }
+
+  /* ---------- skills ---------- */
+  .skill-rows { display: grid; gap: 22px; }
+  .skill-row { display: grid; grid-template-columns: 170px 1fr; gap: 20px; align-items: baseline; }
+  .skill-row h4 { font-family: var(--mono); font-size: 12.5px; color: var(--faint); font-weight: 500; letter-spacing: 0.05em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 8px; padding: 5px 12px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .chip:hover { color: var(--accent); border-color: rgba(200,240,74,0.4); }
+  @media (max-width: 640px) { .skill-row { grid-template-columns: 1fr; gap: 8px; } }
+
+  /* ---------- contact ---------- */
+  .contact { text-align: center; padding: 110px 0; }
+  .contact h2 { font-size: clamp(32px, 5vw, 46px); margin-bottom: 16px; }
+  .contact p { color: var(--muted); max-width: 460px; margin: 0 auto 36px; }
+  .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 28px 0;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    font-family: var(--mono); font-size: 12px; color: var(--faint);
+  }
+  footer a { color: var(--faint); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#"><span>~/</span>taran</a>
+    <div class="nav-links">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">SOUTHAMPTON, UK</div>
+    <h1>Taran Pal Singh<br><span class="dim">builds AI-native products.</span></h1>
+    <p class="lede">
+      Computer Science undergraduate at the <strong>University of Southampton</strong> (First Class, graduating 2028).
+      I ship <strong>AI agents, full-stack platforms, and automation</strong> — from hackathon wins to
+      grant-backed ventures — and lead partnerships at 180 Degrees Consulting.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#projects">See my work ↓</a>
+      <a class="btn btn-ghost" href="mailto:tps1g25@soton.ac.uk">Get in touch</a>
+    </div>
+    <div class="hero-meta">
+      <div><b>8+</b>shipped projects</div>
+      <div><b>1st</b>Best Use of Gemini API, SotonHack ’26</div>
+      <div><b>2×</b>internships by year one</div>
+      <div><b>First Class</b>current grade</div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>Experience</h2></div>
+    <div class="xp">
+      <div class="xp-item reveal">
+        <div class="xp-when">JUN 2026 — PRESENT</div>
+        <div>
+          <div class="xp-role">Project Data Support Intern<span class="tag-now">NOW</span></div>
+          <div class="xp-org">Fiander ETL · Southampton</div>
+          <p class="xp-desc">Data migration and structuring across client systems; working with CCH accounting software, with Excel and SQL data-cleansing pipelines.</p>
+        </div>
+      </div>
+      <div class="xp-item reveal">
+        <div class="xp-when">2026 — PRESENT</div>
+        <div>
+          <div class="xp-role">Partnerships Director</div>
+          <div class="xp-org">180 Degrees Consulting · University of Southampton</div>
+          <p class="xp-desc">Leading client acquisition, corporate partnerships, and sponsor relationships for the world's largest university consultancy. Previously consultant on a live client engagement. Also incoming Tech Head of the Entrepreneurship Society.</p>
+        </div>
+      </div>
+      <div class="xp-item reveal">
+        <div class="xp-when">MAR 2026</div>
+        <div>
+          <div class="xp-role">Software Developer Intern</div>
+          <div class="xp-org">Film Finder · Barclays Eagle Labs / Sky-backed startup</div>
+          <p class="xp-desc">Worked on an app with 80+ daily active users: TypeScript → Swift/SwiftUI migration, Firebase and third-party API integration, and data pipelines. Claude Code, Cursor, Jira, Git throughout.</p>
+        </div>
+      </div>
+      <div class="xp-item reveal">
+        <div class="xp-when">JAN 2024 — JAN 2026</div>
+        <div>
+          <div class="xp-role">Developer &amp; Designer</div>
+          <div class="xp-org">Matek Innovative Solutions</div>
+          <p class="xp-desc">Sole technical owner of the company website for two years. Built Claros, an AI-powered aftermarket parts identification system, plus n8n automation workflows and commercial documentation for international clients.</p>
+        </div>
+      </div>
+      <div class="xp-item reveal">
+        <div class="xp-when">2023 — 2024</div>
+        <div>
+          <div class="xp-role">Head of Graphic Design</div>
+          <div class="xp-org">Voice Your Vichaar</div>
+          <p class="xp-desc">Led visual identity, content strategy, and social media output for a community platform.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Projects</h2></div>
+    <div class="grid">
+      <div class="card featured reveal">
+        <div class="card-top"><h3>AgentPay</h3><span class="status live">ACTIVE BUILD</span></div>
+        <p>Autonomous payments agent that lets AI agents complete real-world purchases end-to-end. Innovate UK grant application prepared against a projected $1.7T agentic-commerce market.</p>
+        <div class="stack">React · TypeScript · Node.js · FastAPI · Claude API · Visa Intelligent Commerce · Stripe · PostgreSQL · Redis</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-top"><h3>Helm</h3><span class="status live">PROTOTYPE</span></div>
+        <p>Observability and control layer for AI coding agents. Monitor, pause, kill, and send input to Claude Code and Cursor sessions remotely from your phone.</p>
+        <div class="stack">Node.js · WebSocket daemon · mobile-first PWA</div>
+      </div>
+      <a class="card reveal" href="https://sotonhive.tech" target="_blank" rel="noopener">
+        <div class="card-top"><h3>Hive</h3><span class="status live">SHIPPED</span></div>
+        <p>University AI event platform, built solo in under three months. RAG semantic search and a vision-based auto-fill pipeline.</p>
+        <div class="award-line">🏆 Impact Lab Grant — University of Southampton</div>
+        <div class="stack">Next.js · PostgreSQL · REST · RAG</div>
+        <span class="ext">sotonhive.tech ↗</span>
+      </a>
+      <div class="card reveal">
+        <div class="card-top"><h3>GroundWire</h3><span class="status">HACKATHON</span></div>
+        <p>Multi-stage AI pipeline turning circuit photos into solved schematics — Gemini Vision to JSON into a TypeScript MNA solver built on Kirchhoff's laws.</p>
+        <div class="award-line">🏆 Best Use of Gemini API — SotonHack 2026 (20+ teams)</div>
+        <div class="stack">Gemini Vision · TypeScript · React Flow</div>
+      </div>
+      <a class="card reveal" href="https://claros-neon.vercel.app" target="_blank" rel="noopener">
+        <div class="card-top"><h3>Claros</h3><span class="status live">SHIPPED</span></div>
+        <p>AI-powered aftermarket parts identification system, built for Matek Innovative Solutions.</p>
+        <div class="stack">AI vision · web app</div>
+        <span class="ext">claros-neon.vercel.app ↗</span>
+      </a>
+      <div class="card reveal">
+        <div class="card-top"><h3>AI Safety Evaluation Framework</h3><span class="status">RESEARCH</span></div>
+        <p>Python pipeline for automated classification and adversarial stress-testing of LLM outputs at scale.</p>
+        <div class="stack">Python · LLM evals · adversarial testing</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-top"><h3>LinkedIn Content Agent</h3><span class="status">SHIPPED</span></div>
+        <p>Claude-powered agent that produces ready-to-publish LinkedIn posts from a single topic input.</p>
+        <div class="stack">Claude API · agents</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-top"><h3>AI CV Builder</h3><span class="status">SHIPPED</span></div>
+        <p>Claude-powered tool that tailors CV content using job descriptions as context.</p>
+        <div class="stack">Claude API · prompt engineering</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Awards &amp; Recognition</h2></div>
+    <div class="awards">
+      <div class="award reveal"><span class="ic">🏆</span><div><b>Winner — Best Use of Gemini API</b><span>SotonHack 2026, against 20+ competing teams</span></div></div>
+      <div class="award reveal"><span class="ic">💷</span><div><b>Impact Lab Grant</b><span>University of Southampton, for Hive</span></div></div>
+      <div class="award reveal"><span class="ic">🦈</span><div><b>Finalist — Masters Union CEO Challenge 2024</b><span>Pitched to Anupam Mittal (Shark Tank India)</span></div></div>
+      <div class="award reveal"><span class="ic">🎯</span><div><b>Selected Participant — EMEA Strategy Consulting Summit</b><span>UCL, February 2026</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Skills</h2></div>
+    <div class="skill-rows">
+      <div class="skill-row reveal"><h4>LANGUAGES</h4><div class="chips"><span class="chip">Python</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">Java</span><span class="chip">SQL</span><span class="chip">C</span><span class="chip">Swift</span><span class="chip">Bash</span></div></div>
+      <div class="skill-row reveal"><h4>AI &amp; AGENTS</h4><div class="chips"><span class="chip">Anthropic API</span><span class="chip">Claude Code</span><span class="chip">Gemini API</span><span class="chip">RAG</span><span class="chip">LLM agents</span><span class="chip">multi-agent orchestration</span><span class="chip">MCP</span><span class="chip">n8n</span></div></div>
+      <div class="skill-row reveal"><h4>FRONTEND</h4><div class="chips"><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span><span class="chip">SwiftUI</span><span class="chip">PWA</span></div></div>
+      <div class="skill-row reveal"><h4>BACKEND &amp; DATA</h4><div class="chips"><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">Express</span><span class="chip">WebSockets</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Firebase</span></div></div>
+      <div class="skill-row reveal"><h4>INFRA & TOOLS</h4><div class="chips"><span class="chip">Docker</span><span class="chip">Git</span><span class="chip">Vercel</span><span class="chip">Railway</span><span class="chip">Linux</span><span class="chip">Figma</span><span class="chip">Jira</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="reveal">
+      <h2>Let's build something.</h2>
+      <p>Open to internships, collaborations, and interesting conversations about AI agents, startups, and everything in between.</p>
+      <div class="contact-links">
+        <a class="btn btn-solid" href="mailto:tps1g25@soton.ac.uk">tps1g25@soton.ac.uk</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/taran-pal-singh" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/36taransingh5-dotcom" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;">
+    <span>© 2026 Taran Pal Singh</span>
+    <span>Southampton, UK · <a href="mailto:tps1g25@soton.ac.uk">tps1g25@soton.ac.uk</a></span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
+
+</body>
+</html>
