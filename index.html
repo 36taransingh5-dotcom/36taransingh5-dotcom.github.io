@@ -420,13 +420,13 @@
       for (let i = 0; i < count; i++) {
         if (particles.length > 220) particles.shift();
         particles.push({
-          x: x + (Math.random() - 0.5) * 8,
-          y: y + (Math.random() - 0.5) * 8,
-          vx: (Math.random() - 0.5) * 0.9,
-          vy: (Math.random() - 0.5) * 0.9 - 0.25,
-          size: 2 + (Math.random() * 4) | 0,
+          x: x + (Math.random() - 0.5) * 3,
+          y: y + (Math.random() - 0.5) * 3,
+          vx: (Math.random() - 0.5) * 0.25,
+          vy: (Math.random() - 0.5) * 0.25,
+          size: 5 + (Math.random() * 5) | 0,
           life: 1,
-          decay: 0.015 + Math.random() * 0.025,
+          decay: 0.02 + Math.random() * 0.03,
           color: NEON[(Math.random() * NEON.length) | 0],
         });
       }
@@ -435,7 +435,7 @@
     addEventListener("mousemove", (e) => {
       // emission scales with cursor speed so slow moves leave a sparse dust trail
       const d = last ? Math.hypot(e.clientX - last.x, e.clientY - last.y) : 0;
-      spawn(e.clientX, e.clientY, Math.min(1 + (d / 14) | 0, 5));
+      spawn(e.clientX, e.clientY, Math.min(1 + (d / 24) | 0, 3));
       last = { x: e.clientX, y: e.clientY };
     });
 
