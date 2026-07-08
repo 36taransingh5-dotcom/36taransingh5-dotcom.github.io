@@ -668,8 +668,8 @@
     }
 
     function act() {
-      if (state === "run") { ball.vy = -7.6; }
-      else { reset(); state = "run"; ball.vy = -7.6; }
+      if (state === "run") { ball.vy = -5.6; }
+      else { reset(); state = "run"; ball.vy = -5.6; }
     }
 
     cvs.addEventListener("pointerdown", (e) => { e.preventDefault(); act(); });
