@@ -136,16 +136,21 @@
   @media (max-width: 640px) { .xp-item { grid-template-columns: 1fr; gap: 6px; } }
 
   /* ---------- projects ---------- */
-  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: start; }
   @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
   .card {
     background: var(--card); border: 1px solid var(--line); border-radius: 14px;
-    padding: 26px; display: flex; flex-direction: column; gap: 10px;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative;
+    padding: 20px 22px; display: flex; flex-direction: column; gap: 6px;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease, padding-bottom 0.35s ease;
+    position: relative; cursor: pointer;
   }
   a.card { text-decoration: none; color: inherit; }
-  .card:hover { border-color: #3a3a44; transform: translateY(-3px); }
+  .card:hover, .card:focus-within {
+    border-color: #3a3a44; transform: translateY(-3px);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.4);
+    padding-bottom: 24px;
+  }
+  .card:focus-within { outline: none; }
   .card-top { display: flex; justify-content: space-between; align-items: center; }
   .card h3 { font-family: var(--disp); font-size: 19px; font-weight: 600; }
   .card .status {
@@ -154,10 +159,33 @@
     white-space: nowrap;
   }
   .card .status.live { color: var(--accent); border-color: rgba(200,240,74,0.35); }
-  .card p { color: var(--muted); font-size: 14px; flex: 1; }
+  .card p {
+    color: var(--muted); font-size: 14px; line-height: 1.55;
+    max-height: 1.55em; overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+  .card:hover p, .card:focus-within p { max-height: 8em; }
+  .card .stack, .card .award-line, .card .ext {
+    max-height: 0; opacity: 0; overflow: hidden; margin-top: 0;
+    transition: max-height 0.35s ease, opacity 0.25s ease, margin-top 0.35s ease;
+  }
+  .card:hover .stack, .card:focus-within .stack,
+  .card:hover .award-line, .card:focus-within .award-line,
+  .card:hover .ext, .card:focus-within .ext {
+    max-height: 6em; opacity: 1; margin-top: 4px;
+  }
   .card .stack { font-family: var(--mono); font-size: 11.5px; color: var(--faint); line-height: 1.8; }
   .card .award-line { font-size: 13px; color: var(--accent); font-weight: 500; }
   .card .ext { font-family: var(--mono); font-size: 12px; color: var(--accent); }
+  .card::after {
+    content: "hover for details →";
+    position: absolute; right: 22px; bottom: 12px;
+    font-family: var(--mono); font-size: 10px; color: var(--faint);
+    letter-spacing: 0.04em; opacity: 0.6;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+  .card:hover::after, .card:focus-within::after { opacity: 0; }
   .featured { grid-column: span 2; }
   @media (max-width: 760px) { .featured { grid-column: span 1; } }
 
@@ -295,7 +323,7 @@
         <div>
           <div class="xp-role">Project Data Support Intern<span class="tag-now">NOW</span></div>
           <div class="xp-org">Fiander ETL · Southampton</div>
-          <p class="xp-desc">Data migration and structuring across client systems; working with CCH accounting software, with Excel and SQL data-cleansing pipelines.</p>
+          <p class="xp-desc">Migrating and restructuring client data across systems, including CCH accounting software; building Excel/SQL data-cleansing pipelines.</p>
         </div>
       </div>
       <div class="xp-item reveal">
@@ -303,7 +331,7 @@
         <div>
           <div class="xp-role">Partnerships Director</div>
           <div class="xp-org">180 Degrees Consulting · University of Southampton</div>
-          <p class="xp-desc">Leading client acquisition, corporate partnerships, and sponsor relationships for the world's largest university consultancy. Previously consultant on a live client engagement. Also incoming Tech Head of the Entrepreneurship Society.</p>
+          <p class="xp-desc">Lead client acquisition and partnerships at the world's largest university consultancy, after delivering a live client engagement as consultant. Incoming Tech Head, Entrepreneurship Society.</p>
         </div>
       </div>
       <div class="xp-item reveal">
@@ -311,7 +339,7 @@
         <div>
           <div class="xp-role">Software Developer Intern</div>
           <div class="xp-org">Film Finder · Barclays Eagle Labs / Sky-backed startup</div>
-          <p class="xp-desc">Worked on an app with 80+ daily active users: TypeScript → Swift/SwiftUI migration, Firebase and third-party API integration, and data pipelines. Claude Code, Cursor, Jira, Git throughout.</p>
+          <p class="xp-desc">Shipped on an app with 80+ daily active users — TypeScript → Swift/SwiftUI migration, Firebase integration, third-party APIs, and data pipelines, using Claude Code, Cursor, Jira, and Git.</p>
         </div>
       </div>
       <div class="xp-item reveal">
@@ -319,7 +347,7 @@
         <div>
           <div class="xp-role">Developer &amp; Designer</div>
           <div class="xp-org">Matek Innovative Solutions</div>
-          <p class="xp-desc">Sole technical owner of the company website for two years. Built Claros, an AI-powered aftermarket parts identification system, plus n8n automation workflows and commercial documentation for international clients.</p>
+          <p class="xp-desc">Sole technical owner of the company website for two years; built Claros, an AI-powered parts-identification system, and n8n automation workflows for internal operations.</p>
         </div>
       </div>
       <div class="xp-item reveal">
@@ -327,7 +355,7 @@
         <div>
           <div class="xp-role">Head of Graphic Design</div>
           <div class="xp-org">Voice Your Vichaar</div>
-          <p class="xp-desc">Led visual identity, content strategy, and social media output for a community platform.</p>
+          <p class="xp-desc">Led visual identity and content strategy for a community platform.</p>
         </div>
       </div>
     </div>
@@ -338,28 +366,28 @@
   <div class="wrap">
     <div class="sec-head reveal"><span class="sec-num">02</span><h2>Projects</h2></div>
     <div class="grid">
-      <div class="card featured reveal">
+      <div class="card featured reveal" tabindex="0">
         <div class="card-top"><h3>AgentPay</h3><span class="status live">ACTIVE BUILD</span></div>
         <p>Autonomous payments agent that lets AI agents complete real-world purchases end-to-end. Innovate UK grant application prepared against a projected $1.7T agentic-commerce market.</p>
         <div class="stack">React · TypeScript · Node.js · FastAPI · Claude API · Visa Intelligent Commerce · Stripe · PostgreSQL · Redis</div>
       </div>
-      <div class="card reveal">
+      <div class="card reveal" tabindex="0">
         <div class="card-top"><h3>Helm</h3><span class="status live">PROTOTYPE</span></div>
         <p>Observability and control layer for AI coding agents. Monitor, pause, kill, and send input to Claude Code and Cursor sessions remotely from your phone.</p>
         <div class="stack">Node.js · WebSocket daemon · mobile-first PWA</div>
       </div>
-      <div class="card reveal">
+      <div class="card reveal" tabindex="0">
         <div class="card-top"><h3>GroundWire</h3><span class="status">HACKATHON</span></div>
         <p>Multi-stage AI pipeline turning circuit photos into solved schematics — Gemini Vision to JSON into a TypeScript MNA solver built on Kirchhoff's laws.</p>
         <div class="award-line">🏆 Best Use of Gemini API — SotonHack 2026 (20+ teams)</div>
         <div class="stack">Gemini Vision · TypeScript · React Flow</div>
       </div>
-      <div class="card reveal">
+      <div class="card reveal" tabindex="0">
         <div class="card-top"><h3>AI Safety Evaluation Framework</h3><span class="status">RESEARCH</span></div>
         <p>Python pipeline for automated classification and adversarial stress-testing of LLM outputs at scale.</p>
         <div class="stack">Python · LLM evals · adversarial testing</div>
       </div>
-      <div class="card reveal">
+      <div class="card reveal" tabindex="0">
         <div class="card-top"><h3>Internship System</h3><span class="status live">ACTIVE BUILD</span></div>
         <p>Agentic job-hunt pipeline: sweeps company career pages for newly opened roles, tailors a CV to each job description with Claude, renders PDFs through a mechanical validation gate, and logs every application — all driven from a zero-dependency local dashboard.</p>
         <div class="stack">Claude Code · Node.js · agentic workflows</div>
